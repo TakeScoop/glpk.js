@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "make all",
-    "test": "NODE_ENV=test LOG_SILENT=true mocha --recursive --require test/injectGlobal.js --exit"
+    "test": "node test/test.js"
   },
   "repository": {
     "type": "git",
@@ -30,12 +30,10 @@
   "dependencies": {},
   "devDependencies": {
     "almost-equal": "^1.1.0",
-    "code": "5.2.1",
     "glpk": "git+https://github.com/hgourvest/node-glpk.git",
     "lodash": "^4.8.2",
     "node": "^11.15.0",
-    "tape": "^4.10.1",
-    "mocha": "5.2.0"
+    "tape": "^4.10.1"
   },
   "types": "glpk.d.ts"
 }
