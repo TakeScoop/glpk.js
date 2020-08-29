@@ -18,7 +18,7 @@ interface LP {
     }[],
     binaries?: string[],
     generals?: string[],
-    settings?: { mipGap?: number, tmLim?: number, msgLev?: number }
+    options?: { mipGap?: number, tmLim?: number, msgLev?: number, preSolve?: number }
 }
 
 interface Result {
@@ -28,7 +28,7 @@ interface Result {
         status: number;
         z: number;
         vars: {[key:string]: number};
-        cons: {[key:string]: {dual: number}}
+        cons?: {[key:string]: {dual: number}};
     };
 }
 
@@ -62,7 +62,7 @@ interface GLPK {
 
     version(): string;
     write(lp: LP): string;
-    solve(lp: LP, settings: {}): Result
+    solve(lp: LP, options: {}): Result
 }
 
 export {
