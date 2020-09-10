@@ -22,10 +22,10 @@ interface LP {
 }
 
 interface Options {
-    mipgap?: number,    /* set relative mip gap tolerance to mipgap, default 0.0 */
-    tmlim?: number,     /* limit solution time to tmlim seconds, default INT_MAX */
-    msglev?: number,    /* message level for terminal output, default GLP_MSG_ERR */
-    presol?: boolean    /* use presolver, default true */
+    mipGap?: number,
+    tmLim?: number,
+    msgLev?: number,
+    presolve?: number
 }
 
 interface Result {
@@ -35,7 +35,7 @@ interface Result {
         status: number;
         z: number;
         vars: {[key:string]: number};
-        dual?: { [key: string]: number }; /* simplex only */
+        cons: {[key:string]: {dual?: number}};
     };
 }
 
@@ -67,13 +67,12 @@ interface GLPK {
     readonly GLP_OPT: number;     /* solution is optimal */
     readonly GLP_UNBND: number;   /* solution is unbounded */
 
-    version(): string;  /* GLPK version */
-    write(lp: LP): string; /* writes problem data in CPLEX LP */
-    solve(lp: LP, options?: number | Options): Result /* options is either a glp message level or an options obj */
+    version(): string;
+    write(lp: LP): string;
+    solve(lp: LP, options?: Options): Result
 }
 
 export {
-    Options,
     LP,
     Result,
     GLPK

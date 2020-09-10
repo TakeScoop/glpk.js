@@ -1,4 +1,4 @@
-FROM emscripten/emsdk:2.0.2
+FROM emscripten/emsdk:1.39.18
 
 USER 1000
 
